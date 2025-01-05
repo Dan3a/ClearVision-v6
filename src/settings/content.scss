@@ -1,6 +1,6 @@
 /* SETTINGS CONTENT */
 %standardSidebarView {
-  >%settingsContentRegion {
+  > %settingsContentRegion {
     background: transparent;
   }
 }
@@ -19,7 +19,7 @@
       border-color: hsla(0, 0%, 100%, 0.6);
       background-color: transparent;
     }
-    >svg>path {
+    > svg > path {
       fill: hsla(0, 0%, 100%, 0.6);
     }
   }
@@ -38,7 +38,7 @@
   background-color: hsla(0, 0%, 100%, 0.05);
 }
 %themeDark %settingsImageUploaderIcon {
-  background-color: var(--main-color);
+  background-color: $main-color;
   background-image: none;
   &:after {
     content: '';
@@ -58,29 +58,15 @@
 // ITEM CARDS
 %themeDark {
   %settingsCard {
-    background-color: rgba(0, 0, 0, 0.4);
-    border-color: hsla(0, 0%, 100%, 0.07);
+    &:not(%settingsCardOutline),
+    &%settingsCardOutline {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-color: hsla(0, 0%, 100%, 0.07);
+    }
     a {
       color: var(--url-color);
     }
   }
-}
-%settingsLongCard:before {
-  background-color: rgba(0, 0, 0, 0.4);
-  border-color: hsla(0, 0%, 100%, 0.07);
-}
-%themeDark {
-  %settingsLongCardButton {
-    background-color: rgba(0, 0, 0, 0.4);
-    border-color: hsla(0, 0%, 100%, 0.07);
-    &:hover {
-      background-color: hsla(0, 0%, 0%, 0.7);
-      border: hsla(0, 0%, 100%, 0.07);
-    }
-  }
-}
-%settingsCardWrapper {
-  background-color: transparent;
 }
 
 // COLOR PICKER
@@ -96,4 +82,49 @@
   %bg {
     animation: cv-shake 0.5s ease-in;
   }
+}
+
+// DROP DOWN
+%settingsLookFilled%settingsDropdownSelect {
+  background-color: hsla(0, 0%, 100%, 0.07);
+  border-color: hsla(0, 0%, 100%, 0.09);
+}
+%settingsDropdownPopout {
+  background-color: cv('bg.general.popout');
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+%settingsDropdownOption {
+  &:hover,
+  &:focus,
+  &%settingsDropdownOptionFocused {
+    background-color: hsla(0, 0%, 100%, 0.05);
+    border: hsla(0, 0%, 100%, 0.07);
+  }
+  &[aria-selected='true']:not(%settingsDropdownOption%settingsDropdownMulti) {
+    background-color: $main-color;
+    %settingsDropdownOptionSelectedIcon {
+      circle {
+        fill: $main-color;
+      }
+    }
+    path {
+      fill: #fff;
+    }
+  }
+}
+
+// ohnyo
+%settingsAttendeeCTA:after {
+  content: 'ClearVision easter egg, please visit our server for a headpat :)';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  color: hsla(0, 0%, 100%, 0.7);
+  text-align: center;
+  top: 130%;
+  z-index: -1;
+  left: 0;
 }

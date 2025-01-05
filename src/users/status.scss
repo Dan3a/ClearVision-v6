@@ -1,27 +1,40 @@
 /* STATUS */
-%avatarMask,
-%headerBarStatusMask {
-  rect {
-    &[mask='url(#svg-mask-status-online)'],
-    &[mask='url(#svg-mask-status-online-mobile)'],
-    &[fill='hsl(139, calc(var(--saturation-factor, 1) * 47.3%), 43.9%)'] {
-      fill: var(--online-color);
-    }
-    &[mask='url(#svg-mask-status-idle)'],
-    &[fill='hsl(38, calc(var(--saturation-factor, 1) * 95.7%), 54.1%)'] {
-      fill: var(--idle-color);
-    }
-    &[mask='url(#svg-mask-status-dnd)'],
-    &[fill='hsl(359, calc(var(--saturation-factor, 1) * 82.6%), 59.4%)'] {
-      fill: var(--dnd-color);
-    }
-    &[mask='url(#svg-mask-status-streaming)'],
-    &[fill='hsl(262, calc(var(--saturation-factor, 1) * 46.8%), 39.8%)'] {
-      fill: var(--streaming-color);
-    }
-    &[mask='url(#svg-mask-status-offline)'],
-    &[fill='hsl(214, calc(var(--saturation-factor, 1) * 9.9%), 50.4%)'] {
-      fill: var(--offline-color);
-    }
+/*status picker*/
+%statusPickerIcon {
+  &[style*='rgb(128, 132, 142)'] {
+    background-color: var(--offline-color) !important;
+  }
+  &[style*='rgb(35, 165, 90)'] {
+    background-color: var(--online-color) !important;
+  }
+  &[style*='rgb(240, 178, 50)'] {
+    background-color: var(--idle-color) !important;
+  }
+  &[style*='rgb(242, 63, 67)'] {
+    background-color: var(--dnd-color) !important;
+  }
+  &[style*='rgb(89, 54, 149)'] {
+    background-color: var(--streaming-color) !important;
   }
 }
+
+/*member list, profile*/
+:is(%avatarCursorDefault, %avatarMask, %userSettingsProfilesPreviewStatus) rect {
+  &[fill*='#80848e'] {
+    fill: var(--offline-color);
+  }
+  &[fill*='#23a55a'] {
+    fill: var(--online-color);
+  }
+  &[fill*='#f0b232'] {
+    fill: var(--idle-color);
+  }
+  &[fill*='#f23f43'] {
+    fill: var(--dnd-color);
+  }
+  &[fill*='#593695'] {
+    fill: var(--streaming-color);
+  }
+}
+/*note: we have to use fill by color anyway for some dumb cases, so 
+the mask part is useless lol*/
